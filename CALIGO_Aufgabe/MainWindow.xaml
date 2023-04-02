@@ -1,0 +1,74 @@
+﻿<Window x:Class="CALIGO_Aufgabe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CALIGO_Aufgabe"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="836" Width="1338" ResizeMode="CanMinimize">
+    <StackPanel Orientation="Horizontal">
+        <DockPanel Width="669">
+            <ListView x:Name="SourceList" ItemsSource="{Binding Features}" SelectionChanged="SourceList_SelectionChanged" DockPanel.Dock="Top" Height="467" SelectionMode="Single">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[0].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[1].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[2].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[3].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[4].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[5].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[6].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[7].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[8].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[9].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[10].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[11].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[12].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[13].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[14].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[15].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[16].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[17].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[18].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[19].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[20].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[21].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[22].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[23].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[24].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[25].Value}"/>
+                        <GridViewColumn Header="" DisplayMemberBinding="{Binding Parameters[26].Value}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListBox x:Name="SourceListDetails" DockPanel.Dock="Top" Height="259"  BorderBrush="Transparent" 
+                    Grid.IsSharedSizeScope="True"
+                    HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Key" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" MinWidth="200"/>
+                            <TextBox Grid.Column="1" Text="{Binding Value , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding readOnly}" TextChanged="TextChangedHandler"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Border x:Name="Buttons" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="SaveButton" Content="Save" Click="SaveButton_Click" Grid.Row="1" Width="150" Height="30" Margin="344,32,173,-62"/>
+                    <Button x:Name="LoadButton" Content="Load" Margin="176,32,341,-62" Click="LoadButton_Click" Grid.Row="1" Width="150" Height="30"/>
+                </Grid>
+            </Border>
+        </DockPanel>
+        <Border x:Name="Target" BorderBrush="Black" BorderThickness="1" Padding="1,1,1,1" Height="820" Width="669">
+            <TextBlock x:Name="TargetText" TextWrapping="Wrap" Text="" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="5,5,5,5" Width="{Binding ActualWidth, ElementName=Target, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=Target, Mode=OneWay}" Margin="0,0,-4,0"/>
+        </Border>
+    </StackPanel>
+</Window>
